@@ -424,3 +424,5 @@ Open your web browser and navigate to: **`http://localhost:5173`**
 - **Email Service**: External SMTP delivery (e.g., SendGrid/Nodemailer) can be connected for emailing PDFs directly to customers.
 - **Payment Gateway**: Current version records offline payments (UPI, NEFT, RTGS, Cash); future iterations can integrate Razorpay/Stripe webhooks for online checkout.
 - **E-Way Bill & E-Invoicing**: Future updates can integrate government NIC portal APIs for businesses with turnover exceeding ₹5 Crore.
+#   B I M S - F S D - r e p o r t  
+ 

@@ -8,8 +8,11 @@ const connectDB = async () => {
     console.log(`[MongoDB] Connected successfully: ${conn.connection.host}/${conn.connection.name}`);
   } catch (error) {
     console.error(`[MongoDB] Connection error: ${error.message}`);
+    if (process.env.SERVERLESS) throw error;
     process.exit(1);
   }
 };
+
+connectDB.isConnected = () => mongoose.connection.readyState === 1;
 
 module.exports = connectDB;

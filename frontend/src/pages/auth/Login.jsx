@@ -46,7 +46,7 @@ export default function Login() {
         setError(err.response.data.message);
       } else if (err.code === 'ERR_NETWORK') {
         setError(
-          'Cannot connect to the login server. Start the backend with "npm run backend", then try again.'
+          'Cannot reach the login server. Please check your connection and try again.'
         );
       } else {
         setError('Login failed. Please check your credentials and try again.');

@@ -51,9 +51,13 @@ export default function Register() {
       await register(formData);
       navigate('/', { replace: true });
     } catch (err) {
-      setError(
-        err.response?.data?.message || 'Registration failed. Please check the entered data.'
-      );
+      if (err.response?.data?.message) {
+        setError(err.response.data.message);
+      } else if (err.code === 'ERR_NETWORK') {
+        setError('Cannot reach the server. Please check your connection and try again.');
+      } else {
+        setError('Registration failed. Please check the entered data.');
+      }
     } finally {
       setLoading(false);
     }

@@ -16,8 +16,10 @@ const dashboardRoutes = require('./routes/dashboardRoutes');
 const reportRoutes = require('./routes/reportRoutes');
 const businessProfileRoutes = require('./routes/businessProfileRoutes');
 
-// Connect to MongoDB
-connectDB();
+// Connect to MongoDB (in serverless mode the function handler connects lazily)
+if (!process.env.SERVERLESS) {
+  connectDB();
+}
 
 const app = express();
 
@@ -75,7 +77,7 @@ app.use(errorHandler);
 const PORT = process.env.PORT || 5000;
 
 let server;
-if (process.env.NODE_ENV !== 'test') {
+if (process.env.NODE_ENV !== 'test' && !process.env.SERVERLESS) {
   server = app.listen(PORT, () => {
     console.log(`[Server] IBMS Server running on port ${PORT} in ${process.env.NODE_ENV || 'development'} mode.`);
   });
